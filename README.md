@@ -360,12 +360,12 @@ See [`replacePlaceholdersInString`](#replaceplaceholdersinstring).
 Usage:
 
 ```typescript
-import { createPathFromRoute } from '@freshheads/javascript-essentials/routing/createPathFromRoute'
+import { createPathFromRoute } from '@freshheads/javascript-essentials/routing/createPathFromRoute';
 
 // outputs: /blog/post/3/my-blog-post-something
 const path = createPathFromRoute('/blog/post/:id/:slug', {
     ':id': 3,
-    ':slug': 'my-blog-post-something
+    ':slug': 'my-blog-post-something',
 });
 ```
 
