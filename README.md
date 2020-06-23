@@ -41,7 +41,7 @@ Can be used to create an array with a range of numbers in it from the supplied `
 Usage:
 
 ```javascript
-import { createRangeArray } from '@freshheads/javascript-essentials/utilities/arrayUtilities';
+import { createRangeArray } from '@freshheads/javascript-essentials/build/utilities/arrayUtilities';
 
 createRangeArray(2, 7); // returns [2, 3, 4, 5, 6, 7]
 createRangeArray(2, 7, 2); // returns [2, 4, 6]
@@ -54,7 +54,7 @@ Takes an array and groups the items in it by looping through it and resolving th
 Usage:
 
 ```typescript
-import { groupResultsByCallback } from '@freshheads/javascript-essentials/utilities/arrayUtilities';
+import { groupResultsByCallback } from '@freshheads/javascript-essentials/build/utilities/arrayUtilities';
 
 type ItemType = { title: string; type: string };
 
@@ -104,7 +104,7 @@ Takes an array of objects and sorts it by grouping objects that have the same ke
 Usage:
 
 ```typescript
-import { groupObjectArrayByObjectKey } from '@freshheads/javascript-essentials/utilities/arrayUtilities';
+import { groupObjectArrayByObjectKey } from '@freshheads/javascript-essentials/build/utilities/arrayUtilities';
 
 type ItemType = { title: string; type?: string };
 
@@ -155,7 +155,7 @@ Takes a string with placeholders and it's replacements and returns a new string 
 Usage:
 
 ```javascript
-import { replacePlaceholdersInString } from '@freshheads/javascript-essentials/utilities/stringUtilities';
+import { replacePlaceholdersInString } from '@freshheads/javascript-essentials/build/utilities/stringUtilities';
 
 const first = 1;
 const second = '3';
@@ -187,7 +187,7 @@ Takes parts of a name and creates a full name out of it.
 Usage:
 
 ```typescript
-import { createFullNameFromParts } from '@freshheads/javascript-essentials/utilities/stringUtilities';
+import { createFullNameFromParts } from '@freshheads/javascript-essentials/build/utilities/stringUtilities';
 
 // Output: 'Peter van der Sanden'
 createFullNameFromParts('Peter', 'van der', 'Sanden');
@@ -203,7 +203,7 @@ Removes line breaks from a string and replaces them with something else.
 Usage:
 
 ```typescript
-import { removeLineBreaks } from '@freshheads/javascript-essentials/utilities/stringUtilities';
+import { removeLineBreaks } from '@freshheads/javascript-essentials/build/utilities/stringUtilities';
 
 // Output: 'Eerste regel. Tweede regel'
 removeLineBreaks('Eerste regel\\r\\nTweede regel', '. ');
@@ -233,7 +233,7 @@ A restartable timeout with a clear interface, that allows for callback chaining 
 Usage:
 
 ```typescript
-import RestartableTimeout from '@freshheads/javascript-essentials/utilities/RestartableTimeout';
+import RestartableTimeout from '@freshheads/javascript-essentials/build/utilities/RestartableTimeout';
 
 const timeout = new RestartableTimeout(1000); // 1 second timeout
 
@@ -259,7 +259,7 @@ Sometimes promises need to be executed one after another. For instance when you 
 Usage:
 
 ```typescript
-import RequestQueue from '@freshheads/javascript-essentials/utilities/PromiseQueue';
+import RequestQueue from '@freshheads/javascript-essentials/build/utilities/PromiseQueue';
 
 const queue = new PromiseQueue();
 
@@ -298,7 +298,7 @@ Re-usable `ErrorBoundary` for React projects. Catches uncaught errors in child c
 Usage:
 
 ```javascript
-import { ErrorBoundary } from '@freshheads/javascript-essentials/react/components/ErrorBoundary';
+import ErrorBoundary from '@freshheads/javascript-essentials/build/react/components/ErrorBoundary';
 
 const YourApp = () => {
     const onErrorOccurred: OnErrorOccurredHandler = (error, errorInfo) =>
@@ -329,7 +329,7 @@ Useful as an fix for [stale callbacks](https://reactjs.org/docs/hooks-faq.html#w
 Usage:
 
 ```typescript
-import useStateWithRef from '@freshheads/javascript-essentials/react/hooks/useStateWithRef';
+import useStateWithRef from '@freshheads/javascript-essentials/build/react/hooks/useStateWithRef';
 
 const myComponent: Reat.FC = () => {
     // Can be used pretty much like `getState()` except `getState` is a function
@@ -344,7 +344,7 @@ Scrolls to top when one of the supplied dependencies changes. Can be used for in
 Usage:
 
 ```typescript
-import useStateWithRef from '@freshheads/javascript-essentials/react/hooks/useScrollToTopOnDependencyChange';
+import useStateWithRef from '@freshheads/javascript-essentials/build/react/hooks/useScrollToTopOnDependencyChange';
 
 const location = useLocation(); // react-router-dom
 
@@ -360,7 +360,7 @@ See [`replacePlaceholdersInString`](#replaceplaceholdersinstring).
 Usage:
 
 ```typescript
-import { createPathFromRoute } from '@freshheads/javascript-essentials/routing/createPathFromRoute';
+import { createPathFromRoute } from '@freshheads/javascript-essentials/build/routing/createPathFromRoute';
 
 // outputs: /blog/post/3/my-blog-post-something
 const path = createPathFromRoute('/blog/post/:id/:slug', {
@@ -389,7 +389,7 @@ Usage:
 import {
     get,
     write,
-} from '@freshheads/javascript-essentials/storage/localStorage';
+} from '@freshheads/javascript-essentials/build/storage/localStorage';
 
 // basic usage
 const success = write('key', 2912);
