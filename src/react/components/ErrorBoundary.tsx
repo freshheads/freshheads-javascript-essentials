@@ -17,10 +17,14 @@ type State = {
 };
 
 export default class ErrorBoundary extends Component<Props, State> {
-    state = {
-        error: null,
-        errorInfo: null,
-    };
+    constructor(props: Props) {
+        super(props);
+
+        this.state = {
+            error: null,
+            errorInfo: null,
+        };
+    }
 
     componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         this.setState(
