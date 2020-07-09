@@ -21,6 +21,8 @@ A library containing javascript utilities that we until now often copy between p
         -   [`createNamespacedLogger`](#createnamespacedlogger)
     -   [`RestartableTimeout`](#restartabletimeout)
     -   [`PromiseQueue`](#promisequeue)
+    -   [`dataLayer`](#datalayer)
+        -   [`pushTrackingEvent`](#pushtrackingevent)
 -   [React](#react)
     -   [Components](#components)
         -   [`ErrorBoundary`](#errorboundary)
@@ -315,6 +317,20 @@ queue
 // further utility functions:
 queue.length; // returns the current length of the queue
 queue.started; // returns true if started
+```
+
+### dataLayer
+
+#### `pushTrackingEvent`
+
+Pushes an event to the dataLayer to be picked up by Google Tag Manager, in a standardized format.
+
+Usage:
+
+```typescript
+import { pushTrackingEvent } from '@freshheads/javascript-essentials/build/utilities/dataLayer';
+
+pushTrackingEvent('preorder', 'submit', { subscribeToNewsletter: false });
 ```
 
 ## React
