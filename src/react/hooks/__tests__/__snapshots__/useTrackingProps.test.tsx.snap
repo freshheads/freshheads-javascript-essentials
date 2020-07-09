@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useTrackingProps() When applied on a JSX element ..with context supplied should render the tracking props on it correctly 1`] = `
+<DocumentFragment>
+  <button
+    data-tracking-event-action="submit"
+    data-tracking-event-context="{\\"subscribeToNewsletter\\":true}"
+    data-tracking-event-name="preorder"
+  />
+</DocumentFragment>
+`;
+
+exports[`useTrackingProps() When applied on a JSX element ..without context supplied should render the tracking props on it correctly 1`] = `
+<DocumentFragment>
+  <button
+    data-tracking-event-action="submit"
+    data-tracking-event-name="preorder"
+  />
+</DocumentFragment>
+`;

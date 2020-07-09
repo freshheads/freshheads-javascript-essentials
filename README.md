@@ -27,6 +27,7 @@ A library containing javascript utilities that we until now often copy between p
     -   [Hooks](#hooks)
         -   [`useStateWithRef`](#usestatewithref)
         -   [`useScrollToTopOnDependencyChange`](#usescrolltotopondependencychange)
+        -   [`useTrackingProps`](#usetrackingprops)
 -   [Storage](#storage)
     -   [`localStorage`](#localstorage)
     -   [`sessionStorage`](#sessionstorage)
@@ -378,6 +379,32 @@ import useStateWithRef from '@freshheads/javascript-essentials/build/react/hooks
 const location = useLocation(); // react-router-dom
 
 useScrollToTopOnDependencyChange(location.pathname, location.search);
+```
+
+#### `useTrackingProps`
+
+Applies uniform setup for tracking events, using attributes on DOM elements. In Google Tag Manager these can be registered and used to, in turn, push events to Google Analytics or other (tracking) platforms.
+
+Usage:
+
+```jsx
+import useTrackingProps from '@freshheads/javascript-essentials/build/react/hooks/useTrackingProps';
+
+type Props = {
+    subscribeToNewsletter: boolean,
+};
+
+const PreorderSubmitButton: React.FC<Props> = (subscribeToNewsletter) => {
+    const trackingProps = useTrackingProps('preorder', 'submit', {
+        subscribeToNewsletter,
+    });
+
+    return (
+        <button {...trackingProps} type="submit">
+            Submit
+        </button>
+    );
+};
 ```
 
 ## Routing
