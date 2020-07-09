@@ -2,23 +2,23 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import useScrollToTopOnDependencyChange from '../useScrollToTopOnDependencyChange';
 
 describe('useScrollToTopOnDependencyChange', () => {
-    let oldWindowScroll: Function;
+    let oldWindowScrollTo: Function;
 
     beforeEach(() => {
-        oldWindowScroll = window.scroll;
-        window.scroll = jest.fn();
+        oldWindowScrollTo = window.scrollTo;
+        window.scrollTo = jest.fn();
     });
 
     afterEach(() => {
         // @ts-ignore => cannot copy type of window.scroll somehow
-        window.scroll = oldWindowScroll;
+        window.scrollTo = oldWindowScrollTo;
     });
 
     describe('on mount', () => {
         it('should execute window.scroll', () => {
             renderHook(() => useScrollToTopOnDependencyChange());
 
-            expect(window.scroll).toBeCalledTimes(1);
+            expect(window.scrollTo).toBeCalledTimes(1);
         });
     });
 
@@ -34,7 +34,7 @@ describe('useScrollToTopOnDependencyChange', () => {
             depedencies = ['second'];
             rerender();
 
-            expect(window.scroll).toBeCalledTimes(2);
+            expect(window.scrollTo).toBeCalledTimes(2);
         });
     });
 });
