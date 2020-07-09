@@ -30,6 +30,7 @@ A library containing javascript utilities that we until now often copy between p
 -   [Storage](#storage)
     -   [`localStorage`](#localstorage)
     -   [`sessionStorage`](#sessionstorage)
+    -   [`cookieStorage`](#cookiestorage)
 -   [Cache](#cache)
     -   [`createInMemoryCache`](#createinmemorycache)
 
@@ -434,7 +435,15 @@ const value = getInt('key', -1, true, (error) =>
 
 ### `sessionStorage`
 
-See `localStorage` above but for `sessionStorage`.
+See `localStorage` above for usage. The same interface is implemented.
+
+### `cookieStorage`
+
+See `localStorage` above for usage. The same interface is implemented.
+
+Requirements:
+
+-   Install [`js-cookie`](https://www.npmjs.com/package/js-cookie) as it is used underneath to easily access browser cookies.
 
 ## Cache
 
