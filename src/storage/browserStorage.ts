@@ -4,7 +4,7 @@ export type OnErrorHandler = (error: Error) => void;
 
 type GetBoolean = (
     key: string,
-    fallback: boolean,
+    fallback: boolean | null,
     catchError?: boolean,
     onError?: OnErrorHandler
 ) => boolean | null;
