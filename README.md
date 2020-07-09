@@ -36,6 +36,8 @@ A library containing javascript utilities that we until now often copy between p
     -   [`cookieStorage`](#cookiestorage)
 -   [Cache](#cache)
     -   [`createInMemoryCache`](#createinmemorycache)
+-   [Types](#types)
+    -   [`Serializable`](#serializable)
 
 ## Utilities
 
@@ -526,6 +528,24 @@ cache.clear();
 
 // counts number of keys in cache
 cache.count();
+```
+
+## Types
+
+### `Serializable`
+
+An interface that can be used to only allow properties that are serializable. Usable for JSON serialization or as a validation for Redux global state data.
+
+Usage:
+
+```typescript
+import { Serializable } from '@freshheads/javascript-essentials/build/types/utility';
+
+const toJson = (values: Serializable): string => JSON.stringify(values);
+
+class SomeClass {}
+
+toJson({ value: new SomeClass() }); // = typescript error
 ```
 
 # Todo
