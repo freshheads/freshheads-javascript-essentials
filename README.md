@@ -9,11 +9,14 @@ A library containing javascript utilities that we until now often copy between p
         -   [`createRangeArray`](#createrangearray)
         -   [`groupResultsByCallback`](#groupresultsbycallback)
         -   [`groupObjectArrayByObjectKey`](#groupobjectarraybyobjectkey)
-    -   [String](#string-utilities)
+    -   [String](#string)
         -   [`replacePlaceholdersInString`](#replaceplaceholdersinstring)
         -   [`truncatePreservingWords`](#truncatepreservingwords)
         -   [`createFullNameFromParts`](#createfullnamefromparts)
         -   [`removeLineBreaks`](#removelinebreaks)
+    -   [Colors](#colors)
+        -   [`isValidHexColor`](#isvalidhexcolor)
+        -   [`convertHexToRGB`](#converthextorgb)
     -   [Logger](#logger)
         -   [`createNamespacedLogger`](#createnamespacedlogger)
     -   [`RestartableTimeout`](#restartabletimeout)
@@ -209,6 +212,32 @@ import { removeLineBreaks } from '@freshheads/javascript-essentials/build/utilit
 removeLineBreaks('Eerste regel\\r\\nTweede regel', '. ');
 ```
 
+### Colors
+
+#### `isValidHexColor`
+
+Takes a string and validates if it is a valid HEX color.
+
+Usage:
+
+```typescript
+import { isValidHexColor } from '@freshheads/javascript-essentials/build/utilities/colorUtilities';
+
+isValidHexColor('#ff9900'); // output: true
+```
+
+#### `convertHexToRGB`
+
+Converts a HEX color string to a rgb(a) color string, applying alpha if needed.
+
+Usage:
+
+```typescript
+import { convertHexToRGB } from '@freshheads/javascript-essentials/build/utilities/colorUtilities';
+
+convertHexToRGB('#ff9900'); // output: rgb(255,153,0)
+```
+
 ### Logger
 
 #### `createNamespacedLogger`
@@ -284,7 +313,6 @@ queue
 // further utility functions:
 queue.length; // returns the current length of the queue
 queue.started; // returns true if started
-
 ```
 
 ## React
@@ -450,7 +478,6 @@ cache.count();
 
 # Todo
 
--   [hexToRgbConverter](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/utility/colorUtility.ts)
 -   [Money formatting](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/utility/numberUtilities.ts)
 -   [Tracking utilities](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/utility/trackingUtilities.ts) (misschien ook HOC oid. `withTrackingOnClick` oid.? Of een hook?)
 -   [Routing: extract path with placeholders](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/routing/utility/urlGenerator.ts#L13)
