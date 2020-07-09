@@ -7,7 +7,7 @@ type GetBoolean = (
     fallback: boolean,
     catchError?: boolean,
     onError?: OnErrorHandler
-) => boolean;
+) => boolean | null;
 
 type GetInt = (
     key: string,
@@ -84,10 +84,10 @@ export function createBrowserStorage(driver: Storage): BrowserStorage {
 
     const getBoolean: GetBoolean = (
         key: string,
-        fallback: boolean = false,
+        fallback: boolean | null = false,
         catchError: boolean = true,
         onError?: OnErrorHandler
-    ): boolean => {
+    ): boolean | null => {
         const value = get(key, catchError, onError);
 
         switch (value) {
