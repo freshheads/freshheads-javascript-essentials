@@ -392,7 +392,7 @@ Scrolls to top when one of the supplied dependencies changes. Can be used for in
 Usage:
 
 ```typescript
-import useStateWithRef from '@freshheads/javascript-essentials/build/react/hooks/useScrollToTopOnDependencyChange';
+import useScrollToTopOnDependencyChange from '@freshheads/javascript-essentials/build/react/hooks/useScrollToTopOnDependencyChange';
 
 const location = useLocation(); // react-router-dom
 
