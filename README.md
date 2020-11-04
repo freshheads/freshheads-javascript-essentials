@@ -30,6 +30,7 @@ A library containing javascript utilities that we until now often copy between p
         -   [`useStateWithRef`](#usestatewithref)
         -   [`useScrollToTopOnDependencyChange`](#usescrolltotopondependencychange)
         -   [`useTrackingProps`](#usetrackingprops)
+        -   [`usePromiseEffect`](#usepromiseeffect)
 -   [Storage](#storage)
     -   [`localStorage`](#localstorage)
     -   [`sessionStorage`](#sessionstorage)
@@ -423,6 +424,50 @@ const PreorderSubmitButton: React.FC<Props> = (subscribeToNewsletter) => {
         </button>
     );
 };
+```
+
+### `usePromiseEffect`
+
+When working with promises in `useEffect()` you have many things to take into account:
+
+-   What to render when the promise is pending
+-   How to catch errors and render your error notification
+-   What to render when the value is resolved
+
+This hook helps you with the status changes and reduces the number of re-renders required to get there.
+
+Usage:
+
+```tsx
+import usePromiseEffect from '@freshheads/javascript-essentials/build/react/hooks/usePromiseEffect';
+
+type Props = {
+    page: number
+}
+
+const ArticleOverview: React.FC<Props> => ({ page }) => {
+    const { value: articles, pending, error } = usePromiseEffect<Article[]>(() => fetchArticles(), [page]);
+
+    if (pending) {
+        return <Loader />;
+    }
+
+    if (error) {
+        return <Error message={error.message} />;
+    }
+
+    if (!value) {
+        throw new Error('Value should be available at this point');
+    }
+
+    return (
+        <div>
+            { state.value.map(article => (
+                <Article data={article} key={article.id} />
+            )) }
+        </div>
+    )
+}
 ```
 
 ## Routing
