@@ -434,7 +434,7 @@ When working with promises in `useEffect()` you have many things to take into ac
 -   How to catch errors and render your error notification
 -   What to render when the value is resolved
 
-This hook helps you with the status changes and reduces the number of re-renders required to get there.
+This hook helps you with the status changes and [reduces the number of re-renders required to get there](https://levelup.gitconnected.com/react-hooks-gotchas-setstate-in-async-effects-d2fd84b02305?gi=8a0b357c6dcc).
 
 Usage:
 
