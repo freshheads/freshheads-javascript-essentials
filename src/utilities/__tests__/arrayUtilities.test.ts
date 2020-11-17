@@ -2,6 +2,7 @@ import {
     createRangeArray,
     groupResultsByCallback,
     groupObjectArrayByObjectKey,
+    chunkArray,
 } from '../arrayUtilities';
 
 describe('arrayUtilities', () => {
@@ -95,6 +96,16 @@ describe('arrayUtilities', () => {
 
             const newsArticles = result.other;
             expect(newsArticles).toHaveLength(1);
+        });
+    });
+
+    describe('chunkArray', () => {
+        it('should return as expected', () => {
+            const items = ['0', '1', '2', '3', '4', '5', '6'];
+            const chunkedArray = chunkArray(items, 3);
+            console.log(chunkedArray);
+
+            expect(chunkedArray).toHaveLength(3);
         });
     });
 });

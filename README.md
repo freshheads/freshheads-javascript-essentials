@@ -9,6 +9,7 @@ A library containing javascript utilities that we until now often copy between p
         -   [`createRangeArray`](#createrangearray)
         -   [`groupResultsByCallback`](#groupresultsbycallback)
         -   [`groupObjectArrayByObjectKey`](#groupobjectarraybyobjectkey)
+        -   [`chunkArray`](#chunkArray)
     -   [String](#string)
         -   [`replacePlaceholdersInString`](#replaceplaceholdersinstring)
         -   [`truncatePreservingWords`](#truncatepreservingwords)
@@ -154,6 +155,23 @@ const result = groupObjectArrayByObjectKey<ItemType>(items, 'type');
 //         }
 //     ]
 // ]
+```
+
+#### `chunkArray`
+
+Given an array and chunk size, divide the array into many subarrays where each subarray is of length size.
+
+Usage:
+
+```typescript
+import { chunkArray } from '@freshheads/javascript-essentials/build/utilities/arrayUtilities';
+
+const items: any[] = [0, 1, 2, 3, 4, 5, 6];
+const chunkedArray: Array<Array<any>> = chunkArray(items, 3);
+
+// output
+//
+// [ [ '0', '1', '2' ], [ '3', '4', '5' ], [ '6' ] ]
 ```
 
 ### String
