@@ -49,3 +49,11 @@ export function groupObjectArrayByObjectKey<T extends { [key: string]: any }>(
         return item[key] || 'other';
     });
 }
+
+export function chunkArray<T>(inputArray: Array<T>, chunkSize: number): Array<Array<T>> {
+    return inputArray.reduce((accumulator: Array<Array<T>>, currentValue: T, currentIndex: number, array: Array<T>) =>
+        !(currentIndex % chunkSize) && currentValue ?
+            accumulator.concat([array.slice(currentIndex, currentIndex + chunkSize)]) :
+            accumulator, []);
+}
+
