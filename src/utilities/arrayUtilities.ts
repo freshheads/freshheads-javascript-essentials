@@ -50,10 +50,10 @@ export function groupObjectArrayByObjectKey<T extends { [key: string]: any }>(
     });
 }
 
-export function chunkArray<T>(arr: Array<T>, chunkSize: number): Array<Array<T>> {
-    return arr.reduce((prevVal: any, currVal: any, currIndx: number, array: Array<T>) =>
-        !(currIndx % chunkSize) && currVal ?
-            prevVal.concat([array.slice(currIndx, currIndx + chunkSize)]) :
-            prevVal, []);
+export function chunkArray<T>(inputArray: Array<T>, chunkSize: number): Array<Array<T>> {
+    return inputArray.reduce((accumulator: Array<Array<T>>, currentValue: T, currentIndex: number, array: Array<T>) =>
+        !(currentIndex % chunkSize) && currentValue ?
+            accumulator.concat([array.slice(currentIndex, currentIndex + chunkSize)]) :
+            accumulator, []);
 }
 

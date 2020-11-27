@@ -54,7 +54,7 @@ describe('arrayUtilities', () => {
 
             const result = groupResultsByCallback<ItemType>(
                 items,
-                (item) => item.type
+                (item) => item.type,
             );
 
             expect(Object.keys(result)).toHaveLength(2);
@@ -105,6 +105,7 @@ describe('arrayUtilities', () => {
             const chunkedArray = chunkArray(items, 3);
 
             expect(chunkedArray).toHaveLength(3);
+            expect(chunkedArray[2]).toEqual(['6']);
         });
     });
 });
