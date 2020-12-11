@@ -2,6 +2,12 @@
 
 A library containing javascript utilities that we until now often copy between projects and want to be make easier accessible.
 
+## Installation
+
+```bash
+npm install git+ssh://git@github.com:freshheads/freshheads-javascript-essentials.git#semver:^1.3 --save
+```
+
 ## TOC
 
 -   [Utilities](#Utilities)
