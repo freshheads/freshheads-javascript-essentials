@@ -497,7 +497,7 @@ See [`replacePlaceholdersInString`](#replaceplaceholdersinstring).
 Usage:
 
 ```typescript
-import { createPathFromRoute } from '@freshheads/javascript-essentials/build/routing/createPathFromRoute';
+import { createPathFromRoute } from '@freshheads/javascript-essentials/build/routing/routeGenerator';
 
 // outputs: /blog/post/3/my-blog-post-something
 const path = createPathFromRoute('/blog/post/:id/:slug', {
