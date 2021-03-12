@@ -38,6 +38,7 @@ npm install git+ssh://git@github.com:freshheads/freshheads-javascript-essentials
         -   [`useScrollToTopOnDependencyChange`](#usescrolltotopondependencychange)
         -   [`useTrackingProps`](#usetrackingprops)
         -   [`usePromiseEffect`](#usepromiseeffect)
+        -   [`useStateUntilUnmount`](#usestateuntilunmount)
 -   [Storage](#storage)
     -   [`localStorage`](#localstorage)
     -   [`sessionStorage`](#sessionstorage)
@@ -494,6 +495,46 @@ const ArticleOverview: React.FC<Props> => ({ page }) => {
 }
 ```
 
+### `useStateUntilUnmount`
+
+We have all seen the warning below popup sometimes:
+
+> Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks...
+
+We often execute asynchronous actions (i.e. API calls) that, when finished, update some component state. When however the component that the action belongs to, is unmounted in the meantime, the no longer needed state (!) is still updated, causing the warning above. Some sort of reference to the component needs to remain in memory to allow the state change to occur, which is a memory leak in your application.
+
+This hook ensures that, once the component is unmounted, the no longer required component state is not updated, making sure that the warning is not triggered. 
+
+If it actually fixes the memory leak, [remains to be seen](https://gist.github.com/troygoode/0702ebabcf3875793feffe9b65da651a#gistcomment-3662958), and usage of this hook is only preferred when there is not a better solution available (or affordable), like awaiting unmount until the async action is finished. Use with care..
+
+Usage:
+
+```typescript jsx
+import React, { useEffect } from 'react';
+import useStateUntilUnmount from '@freshheads/javascript-essentials/build/react/hooks/useStateUntilUnmount'
+
+type Props = {
+    slug: string;
+}
+
+const SomeComponent: React.VFC = ({ slug }) => {
+    const [isFetching, setIsFetching] = useStateUntilUnmount<boolean>(false);
+
+    useEffect(() => {
+        setIsFetching(true);
+        
+        fetchArticleWithSlug(slug).finally(() => {
+            // normally, when this React component is unmounted, before we get
+            // to this point, the React warning above would popup.
+            
+            setIsFetching(false);
+        })
+    }, [slug]);
+    
+    // ...
+}
+```
+
 ## Routing
 
 ### `createPathFromRoute`
@@ -619,7 +660,6 @@ toJson({ value: new SomeClass() }); // = typescript error
 
 # Todo
 
--   [hook that makes sure that no state updated when the component is already unmounted](https://gist.github.com/troygoode/0702ebabcf3875793feffe9b65da651a)
 -   [Money formatting](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/utility/numberUtilities.ts)
 -   [Tracking utilities](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/utility/trackingUtilities.ts) (misschien ook HOC oid. `withTrackingOnClick` oid.? Of een hook?)
 -   [Routing: extract path with placeholders](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/routing/utility/urlGenerator.ts#L13)
