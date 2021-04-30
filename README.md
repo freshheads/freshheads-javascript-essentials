@@ -535,6 +535,32 @@ const SomeComponent: React.VFC = ({ slug }) => {
 }
 ```
 
+### `useLockScroll`
+
+When a modal / popover opens you often want to lock the scroll of the body to prevent double scrollsbars.
+This hook provides two types of lock solutions that are often used.
+
+LockType.Overflow is clean and has less impact on code but is not supported in IOS / Safari
+LockType.Fixed uses position fixed but remembers your scroll position to prevent jumping to top of page. Use when you need all support, could have more impact on your styles.
+> More info can be found here: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
+
+Usage
+```typescript jsx
+import useLockScroll, { LockType } from '@freshheads/javascript-essentials/build/react/hooks/useLockScroll';
+
+
+const Modal = () => {
+    const { isOpen, setIsOpen } = useState<boolean>(false);
+    useLockScroll(LockType.Overflow, isOpen);
+
+    // ...
+}
+```
+
+> There are other solutions:
+> 1. https://github.com/willmcpo/body-scroll-lock -> prevents touch events on iOS in combination with overflow
+> 2. Use overscroll-behavior: contain; -> Css only but seems to have some drawbacks (good for research / first try)
+
 ## Routing
 
 ### `createPathFromRoute`
@@ -664,4 +690,3 @@ toJson({ value: new SomeClass() }); // = typescript error
 -   [Tracking utilities](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/utility/trackingUtilities.ts) (misschien ook HOC oid. `withTrackingOnClick` oid.? Of een hook?)
 -   [Routing: extract path with placeholders](https://github.com/freshheads/013/blob/develop/assets/frontend/src/js/routing/utility/urlGenerator.ts#L13)
 -   [Group object array preserving order](https://github.com/freshheads/freshheads-data-2.0/blob/develop/assets/frontend/src/js/components/blueprintPeriodResultOverview/utilities/resultSortingUtilities.ts)
-- [LockScroll](https://github.com/freshheads/freshheads-kerstwens-2020/blob/main/src/hooks/useLockHtmlScroll.ts)
