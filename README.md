@@ -5,7 +5,7 @@ A library containing javascript utilities that we until now often copy between p
 ## Installation
 
 ```bash
-npm install git+ssh://git@github.com:freshheads/freshheads-javascript-essentials.git#semver:^1.3 --save
+npm install @freshheads/javascript-essentials
 ```
 
 ## TOC
@@ -503,7 +503,7 @@ We have all seen the warning below popup sometimes:
 
 We often execute asynchronous actions (i.e. API calls) that, when finished, update some component state. When however the component that the action belongs to, is unmounted in the meantime, the no longer needed state (!) is still updated, causing the warning above. Some sort of reference to the component needs to remain in memory to allow the state change to occur, which is a memory leak in your application.
 
-This hook ensures that, once the component is unmounted, the no longer required component state is not updated, making sure that the warning is not triggered. 
+This hook ensures that, once the component is unmounted, the no longer required component state is not updated, making sure that the warning is not triggered.
 
 If it actually fixes the memory leak, [remains to be seen](https://gist.github.com/troygoode/0702ebabcf3875793feffe9b65da651a#gistcomment-3662958), and usage of this hook is only preferred when there is not a better solution available (or affordable), like awaiting unmount until the async action is finished. Use with care..
 
@@ -511,28 +511,28 @@ Usage:
 
 ```typescript jsx
 import React, { useEffect } from 'react';
-import useStateUntilUnmount from '@freshheads/javascript-essentials/build/react/hooks/useStateUntilUnmount'
+import useStateUntilUnmount from '@freshheads/javascript-essentials/build/react/hooks/useStateUntilUnmount';
 
 type Props = {
     slug: string;
-}
+};
 
 const SomeComponent: React.VFC = ({ slug }) => {
     const [isFetching, setIsFetching] = useStateUntilUnmount<boolean>(false);
 
     useEffect(() => {
         setIsFetching(true);
-        
+
         fetchArticleWithSlug(slug).finally(() => {
             // normally, when this React component is unmounted, before we get
             // to this point, the React warning above would popup.
-            
+
             setIsFetching(false);
-        })
+        });
     }, [slug]);
-    
+
     // ...
-}
+};
 ```
 
 ### `useLockScroll`
@@ -542,22 +542,26 @@ This hook provides two types of lock solutions that are often used.
 
 LockType.Overflow is clean and has less impact on code but is not supported in IOS / Safari
 LockType.Fixed uses position fixed but remembers your scroll position to prevent jumping to top of page. Use when you need all support, could have more impact on your styles.
+
 > More info can be found here: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
 
 Usage
-```typescript jsx
-import useLockScroll, { LockType } from '@freshheads/javascript-essentials/build/react/hooks/useLockScroll';
 
+```typescript jsx
+import useLockScroll, {
+    LockType,
+} from '@freshheads/javascript-essentials/build/react/hooks/useLockScroll';
 
 const Modal = () => {
     const { isOpen, setIsOpen } = useState<boolean>(false);
     useLockScroll(LockType.Overflow, isOpen);
 
     // ...
-}
+};
 ```
 
 > There are other solutions:
+>
 > 1. https://github.com/willmcpo/body-scroll-lock -> prevents touch events on iOS in combination with overflow
 > 2. Use overscroll-behavior: contain; -> Css only but seems to have some drawbacks (good for research / first try)
 
