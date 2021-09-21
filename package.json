@@ -16,14 +16,18 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/gnoesiboe/javascript-essentials.git"
+        "url": "https://github.com/freshheads/freshheads-javascript-essentials.git"
     },
-    "author": "Gijs Nieuwenhuis <gijs.nieuwenhuis@freshheads.com>",
+    "author": {
+        "name": "Freshheads",
+        "url": "https://freshheads.com",
+        "email": "info@freshheads.com"
+    },
+    "keywords": [
+        "freshheads",
+        "javascript utilities"
+    ],
     "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/gnoesiboe/javascript-essentials/issues"
-    },
-    "homepage": "https://github.com/gnoesiboe/javascript-essentials#readme",
     "devDependencies": {
         "@babel/preset-env": "^7.9.5",
         "@babel/preset-react": "^7.9.4",
