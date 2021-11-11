@@ -39,6 +39,8 @@ npm install @freshheads/javascript-essentials
         -   [`useTrackingProps`](#usetrackingprops)
         -   [`usePromiseEffect`](#usepromiseeffect)
         -   [`useStateUntilUnmount`](#usestateuntilunmount)
+        -   [`useLockScroll`](#useLockScroll)
+        -   [`useMediaQuery`](#useMediaQuery)
 -   [Storage](#storage)
     -   [`localStorage`](#localstorage)
     -   [`sessionStorage`](#sessionstorage)
@@ -564,6 +566,60 @@ const Modal = () => {
 >
 > 1. https://github.com/willmcpo/body-scroll-lock -> prevents touch events on iOS in combination with overflow
 > 2. Use overscroll-behavior: contain; -> Css only but seems to have some drawbacks (good for research / first try)
+
+### `useMediaQuery`
+
+Use CSS media queries in TypeScript with handy API.
+
+It returns a true / false value that you can use in the render.
+
+the following breakpoints are defined:
+- `xs: 0px`
+- `sm: 600px`
+- `md: 960px`
+- `lg: 1280px`
+- `xl: 1920px`
+
+You can use 4 types of matches:
+- `up` (inclusive)
+- `down` (exclusive)
+- `between` (breakpoint (inclusive), additionalBreakpoint (exclusive))
+- `only` (will select previous breakpoint (inclusive), breakpoint (exclusive))
+
+#### explanation
+if u use `useMediaQuery('up', 'md')` it will be `true` if the window is **960px or higher**
+
+if u use `useMediaQuery('down', 'md')` it will be `true` if the window is **959px or lower**
+
+Usage:
+
+```typescript jsx
+import React, { FC, ReactElement } from 'react';
+import useMediaQuery from '@freshheads/javascript-essentials/build/react/hooks/useMediaQuery';
+
+const SomeComponent: FC = ({ slug }): ReactElement => {
+    const upMd = useMediaQuery('up', 'md');
+    
+    // other examples
+    const downLg = useMediaQuery('down', 'lg');
+    const onlyLg = useMediaQuery('only', 'lg');
+    const betweenSmLg = useMediaQuery('between', 'sm', 'lg')
+
+    return (
+        <>
+            {isDesktop ? (
+                <div>
+                    <RenderDesktopComponent />
+                </div>
+            ) : (
+               <div>
+                    <RenderMobileComponent />
+                </div>
+            )}
+        </>
+    )
+};
+```
 
 ## Routing
 
