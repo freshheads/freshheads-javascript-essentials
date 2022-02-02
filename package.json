@@ -53,12 +53,13 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test && lint-staged"
+            "pre-commit": "lint-staged"
         }
     },
     "lint-staged": {
-        "*.{js,json,css,md}": [
-            "prettier --write"
+        "*.{js,json,css,md,ts,tsx}": [
+            "prettier --write",
+            "jest --findRelatedTests"
         ]
     }
 }

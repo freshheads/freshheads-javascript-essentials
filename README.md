@@ -21,6 +21,8 @@ npm install @freshheads/javascript-essentials
         -   [`truncatePreservingWords`](#truncatepreservingwords)
         -   [`createFullNameFromParts`](#createfullnamefromparts)
         -   [`removeLineBreaks`](#removelinebreaks)
+    -   [Number](#number)
+        -   [`clamp`](#clamp)
     -   [Colors](#colors)
         -   [`isValidHexColor`](#isvalidhexcolor)
         -   [`convertHexToRGB`](#converthextorgb)
@@ -242,6 +244,27 @@ import { removeLineBreaks } from '@freshheads/javascript-essentials/build/utilit
 
 // Output: 'Eerste regel. Tweede regel'
 removeLineBreaks('Eerste regel\\r\\nTweede regel', '. ');
+```
+
+### Number
+
+#### `clamp`
+
+Takes a number value, a minimal number and a maximum number and clamps the value between the min and max
+
+Usage:
+
+```typescript
+import { clamp } from '@freshheads/javascript-essentials/build/utilities/numberUtilities';
+
+const min = -10;
+const max = 10;
+
+clamp(20, min, max); // Output: 10
+
+clamp(-8, min, max); // Output: -8
+
+clamp(-12, min, max); // Output: -12
 ```
 
 ### Colors
