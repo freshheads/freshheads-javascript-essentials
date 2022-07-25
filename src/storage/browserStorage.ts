@@ -64,6 +64,10 @@ export function createBrowserStorage(driver: Storage): BrowserStorage {
             );
         }
 
+        if (typeof window === 'undefined') {
+            return null;
+        }
+
         const execute = () => driver.getItem(key);
 
         return catchError
@@ -112,6 +116,10 @@ export function createBrowserStorage(driver: Storage): BrowserStorage {
             throw new Error(
                 'Assigning an onError callback when errors are not caught does not make sense'
             );
+        }
+
+        if (typeof window === 'undefined') {
+            return false;
         }
 
         const execute = () => {
