@@ -24,7 +24,7 @@ describe('dataLayer', () => {
                 const firstItem = window.dataLayer[0];
 
                 expect(firstItem).toEqual({
-                    _clear: true,
+                    _clear: false,
                     event: 'preorder',
                     action: 'submit',
                     context: {
@@ -61,7 +61,7 @@ describe('dataLayer', () => {
                 expect(addedItem).toEqual({
                     event: 'preorder',
                     action: 'submit',
-                    _clear: true,
+                    _clear: false,
                 });
             });
         });
