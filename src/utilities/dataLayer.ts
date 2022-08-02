@@ -13,5 +13,10 @@ export function pushTrackingEvent(
     clear?: boolean
 ): void {
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event, action, context, _clear: clear ?? false });
+    window.dataLayer.push({
+        event,
+        action,
+        context,
+        _clear: clear ? clear : false,
+    });
 }
