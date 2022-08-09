@@ -52,7 +52,7 @@ const executeWithErrorCatcher = <ReturnType>(
     }
 };
 
-export function createBrowserStorage(driver: Storage): BrowserStorage {
+export function createBrowserStorage(driver: Storage | null): BrowserStorage {
     const get: Get = (
         key: string,
         catchError: boolean = true,
@@ -64,7 +64,7 @@ export function createBrowserStorage(driver: Storage): BrowserStorage {
             );
         }
 
-        if (typeof window === 'undefined') {
+        if (typeof window === 'undefined' || driver === null) {
             return null;
         }
 
@@ -118,7 +118,7 @@ export function createBrowserStorage(driver: Storage): BrowserStorage {
             );
         }
 
-        if (typeof window === 'undefined') {
+        if (typeof window === 'undefined' || driver === null) {
             return false;
         }
 
