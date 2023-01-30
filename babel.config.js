@@ -1,3 +1,4 @@
+// babel is only used for the jest tests, not for the library build
 module.exports = {
     presets: [
         [
