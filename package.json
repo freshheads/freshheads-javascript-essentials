@@ -23,6 +23,9 @@
         "url": "https://freshheads.com",
         "email": "info@freshheads.com"
     },
+    "engines": {
+        "node": ">=14"
+    },
     "keywords": [
         "freshheads",
         "javascript utilities"
